@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import "@aws-amplify/ui-react/styles.css";
-import { API } from "aws-amplify";
+import { Amplify, API } from "aws-amplify"; // AmplifyとAPIをインポート
+import awsconfig from "./aws-exports"; // awsconfigをインポート
 import {
   Button,
   Flex,
@@ -16,6 +17,8 @@ import {
   createNote as createNoteMutation,
   deleteNote as deleteNoteMutation,
 } from "./graphql/mutations";
+
+Amplify.configure(awsconfig);
 
 const App = ({ signOut }) => {
   const [notes, setNotes] = useState([]);
